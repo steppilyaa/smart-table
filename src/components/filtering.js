@@ -1,3 +1,4 @@
+
 export function initFiltering(elements) {
     const updateIndexes = (elements, indexes) => {
         Object.keys(indexes).forEach((elementName) => {
@@ -12,8 +13,14 @@ export function initFiltering(elements) {
 
     const applyFiltering = (query, state, action) => {
         // код с обработкой очистки поля
-         
-
+        // @todo: #4.2 — обработать очистку поля
+        if (action && action.name === 'clear')
+        {
+            const actionPar = action.parentElement
+            const closestInput = actionPar.querySelector('input')
+            closestInput.value = '';
+            state[input.name] = ''
+        }
         // @todo: #4.5 — отфильтровать данные, используя компаратор
         const filter = {};
         Object.keys(elements).forEach(key => {
